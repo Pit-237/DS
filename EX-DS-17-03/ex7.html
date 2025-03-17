@@ -1,0 +1,19 @@
+<script>
+
+    let amigos = [];
+    let contador = 1
+
+
+    while(contador < 6) {
+        amigos.push(prompt('Digite o nome de cinco palavras (' + contador +'/5): '));
+        contador++
+
+    }
+    
+    
+
+    amigos.forEach(function(amigo, index) {
+        console.log(index, amigo);
+    })
+
+</script>

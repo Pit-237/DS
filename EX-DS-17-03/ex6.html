@@ -1,0 +1,32 @@
+<script>
+    let notas = [];
+    let contador = 1
+    let nota
+    let somatoria = 0
+   
+    
+    while(contador < 6){
+        notas.push(parseFloat(prompt('Digite a nota (' + contador + '/5)' )))
+        contador++
+    }
+
+    notas.forEach(function(n){
+        somatoria = somatoria + n;
+    })
+    let media = somatoria / 5
+
+    if(media < 7){
+        console.log('Reprovado!')
+    }    
+    else{
+        console.log("Aprovado!")
+    }
+
+    notas.forEach(function(n){
+        console.log("Notas:")
+        console.log(n)
+    })
+    
+
+
+</script>
