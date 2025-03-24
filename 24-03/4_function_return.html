@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let valor_1 = Number(prompt('Digite o valor'));
+        let operador = (prompt('Digite um operador: + - * /'))
+
+        alert(showResult());
+
+        function showResult() {
+            resultado = operador == '+' ? (valor_1 + valor_1) : 'Operador invalido';
+            resultado = operador == '-' ? (valor_1 - valor_1) : 'Operador invalido';
+            resultado = operador == '*' ? (valor_1 * valor_1) : 'Operador invalido';
+            resultado = operador == '/' ? (valor_1 / valor_1) : 'Operador invalido';
+            
+            return resultado;
+        }
+    </script>
+</body>
+</html>
