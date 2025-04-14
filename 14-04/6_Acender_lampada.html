@@ -1,0 +1,48 @@
+<!-- <button style="padding: 40px;">interruptor</button> -->
+
+<script>
+
+    localizarLampada();
+    localizarInterruptor();
+    andarAteInterruptor();
+    acionarInterruptor();
+    checkLampada();
+    aproveitarLuz();
+
+    function localizarLampada(){
+        console.log('Lampada encontrada')
+    }
+    function localizarInterruptor(){
+        console.log('Interruptor encontrado')
+    }
+    function andarAteInterruptor(){
+        console.log('Caminhada até o interruptor concluida!')
+    }
+    function acionarInterruptor(){
+        console.log('Lampada encontrada')
+    }
+  
+    
+
+    
+
+    function checkLampada(){
+
+        let lampada = prompt("A luz já estava ligada? (S/N, ou Q)");
+
+        if (lampada == "S") {
+            console.log('Voce desligou a luz!');
+        }
+        else if(lampada == "Q"){
+            console.log('A lampada esta Queimada!');
+        }
+        else{
+            console.log('Voce ligou a luz!');
+        }
+    }
+
+    function aproveitarLuz(){
+        console.log('Aproveite your choice')
+    }
+
+</script>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let liquidificador = [];
+
+        addIngrediente('1 Xícara de Farinha');
+        addIngrediente('3 Ovos');
+        addIngrediente('3 Colheres de açucar');
+        addIngrediente('1 Colher de Oleo');
+        addIngrediente('1 Xícara de Leite');
+        addIngrediente('1 Colher (chá) de Fermento');
+        addIngrediente('2 Colheres (Sopa) Achocolatado');
+        addIngrediente('Blocos chocolate (aprox. 40g)');
+        
+        misturarIngrendientes();
+
+        addAssadeira();
+
+        addForno();
+
+        aguardarPonto();
+
+        retirarBolo();
+
+        esperarEsfriar();
+
+        degustar();
+
+
+
+        function addIngrediente(ingrediente){
+            liquidificador.push(ingrediente);
+            console.log('Ingredientes adicionados: ' + ingrediente);
+        }
+
+        function misturarIngrendientes(){
+            console.log('Os ingredientes foram misturados com sucesso');
+        }
+        function addAssadeira(){
+            console.log('A massa foi colocada na assadeira com sucesso');
+        }
+        function addForno(){
+            console.log('A massa foi levada ao forno com sucesso');
+        }
+        function aguardarPonto(){
+            console.log('Aguarde enquanto a massa termina de assar . . .');
+        }
+        function retirarBolo(){
+            console.log('Bolo retirado do forno com sucesso');
+        }
+        function esperarEsfriar(){
+            console.log('Aguarde enquanto o bolo esfria . . .');
+        }
+        function degustar(){
+            console.log('Bolo DEGUSTADO');
+            console.log(liquidificador)
+        }
+
+        
+
+    </script>
+</body>
+</html>
