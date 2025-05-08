@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //vetor Objeto
+
+        var times = [
+            {nome: "Corinthians", anoFundacao:1910},
+            {nome: "Palmeiras", anoFundacao:1914},
+            {nome: "Santos", anoFundacao:1912},
+            // {nome: "São Paulo", anoFundacao:1930}
+        ];
+
+        times.push({nome:nomeTime, anoFundacao:fundacao})
+        // times.push({nome:'São Paulo', anoFundacao:1930})
+
+
+        // document.writeln(times[0].nome);
+        // document.writeln(times[1].nome);
+        // document.writeln(times[2].nome);
+        // document.writeln(times[3].nome);
+
+        console.log(times);
+        times.forEach(time => {
+            document.writeln(`Nome: ${time.nome} - Ano da Fundação: ${time.anoFundacao} <br>`)
+        });
+
+    </script>
+</body>
+</html>
