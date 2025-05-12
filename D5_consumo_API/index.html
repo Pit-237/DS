@@ -28,6 +28,7 @@
 
 
 
+    
 
     <script>
       function search(){
@@ -43,7 +44,8 @@
             console.log(country.flag)
             let img = document.createElement('img');
             img.setAttribute('src', country.flags.svg)
-            img.style.width='100%'
+            img.style.width='75%'
+            img.style.height='200px'
             img.style.borderRadius='10px'
             img.style.padding='5px'
 
@@ -55,10 +57,44 @@
             subtitle.innerText = country.name.official;
 
             let capital = document.createElement('strong');
-            capital.innerText = country.capital;
+            capital.innerText = `Capital: ${country.capital}`;
 
             let population = document.createElement('h6');
-            population.innerText = country.population;
+            population.innerText = `Habitantes: ${country.population}`;
+
+            let link = document.createElement('a');
+            link.setAttribute('href', country.maps.googleMaps);
+            link.innerText = 'Mapa'
+
+            let continents = document.createElement('h6');
+            continents.innerText = `Continente: ${country.continents}`;
+
+            let region = document.createElement('h6');
+            region.innerText =  `Região: ${country.region}`;
+
+            let subregion = document.createElement('h6');
+            subregion.innerText = `Sub-Região: ${country.subregion}`;
+            
+            
+            let borders = document.createElement('h6');
+            borders.innerText = `Fonteiras: ${country.borders}`;
+            borders.style.wordBreak="break-word"
+            
+
+            let independent = document.createElement('h6');
+            independent.innerText = `Indenpendent? : ${country.independent}`;
+
+            let coatOfArms = document.createElement('img');
+            coatOfArms.setAttribute('src', country.coatOfArms.svg)
+            coatOfArms.style.width='150px'
+            coatOfArms.style.borderRadius='10px'
+            coatOfArms.style.padding='5px'
+            coatOfArms.innerText = `Bandeira do exercito: ${country.coatOfArms}`;
+
+            let timezones = document.createElement('h6');
+            timezones.innerText = `Fuso Horarios: ${country.timezones}`;
+            timezones.style.wordBreak="break-word"
+            
 
 
             let col = document.createElement('div')
@@ -68,6 +104,14 @@
             col.appendChild(subtitle);
             col.appendChild(capital);
             col.appendChild(population);
+            col.appendChild(link);
+            col.appendChild(continents);
+            col.appendChild(region);
+            col.appendChild(subregion);
+            col.appendChild(borders);
+            col.appendChild(independent);
+            col.appendChild(coatOfArms);
+            col.appendChild(timezones);
             
 
             countries_list.appendChild(col);
