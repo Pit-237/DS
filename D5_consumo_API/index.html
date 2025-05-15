@@ -82,7 +82,7 @@
             
 
             let independent = document.createElement('h6');
-            independent.innerText = `Indenpendent? : ${country.independent}`;
+            independent.innerText = `Independente? : ${country.independent}`;
 
             let coatOfArms = document.createElement('img');
             coatOfArms.setAttribute('src', country.coatOfArms.svg)
@@ -94,6 +94,20 @@
             let timezones = document.createElement('h6');
             timezones.innerText = `Fuso Horarios: ${country.timezones}`;
             timezones.style.wordBreak="break-word"
+
+            let area = document.createElement('h6');
+            area.innerText = `Area: ${country.area} m²`;
+            area.style.wordBreak="break-word"
+
+            let fifa = document.createElement('h6');
+            fifa.innerText = `Sigla FIFA: ${country.fifa}`;
+            fifa.style.wordBreak="break-word"
+
+            let landlocked = document.createElement('h6');
+            landlocked.innerText = `Não tem litoral?: ${country.landlocked}`;
+            landlocked.style.wordBreak="break-word"
+
+            
             
 
 
@@ -112,13 +126,16 @@
             col.appendChild(independent);
             col.appendChild(coatOfArms);
             col.appendChild(timezones);
+            col.appendChild(area);
+            col.appendChild(fifa);
+            col.appendChild(landlocked);
             
 
             countries_list.appendChild(col);
 
             
 
-
+            console.log(country)
           });
         })
         .catch(erro => {
@@ -127,10 +144,12 @@
         .finally(()=>{
           console.log('Requisição Finalizada.')
         })
-
+ 
+        
       }
       
 
+     
         
     </script>
 
