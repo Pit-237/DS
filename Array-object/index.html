@@ -74,48 +74,50 @@
             modelo.innerText=veiculo.modelo;
 
 
-            let ano = document.createElement('h1');
-            ano.style.fontSize='25px'
+            let ano = document.createElement('h2');
+            ano.style.fontSize='21px'
             ano.style.color='black'
             ano.style.textTransform='uppercase'
             ano.innerText=veiculo.ano;
 
-            let combustivel = document.createElement('h1');
-            combustivel.style.fontSize='25px'
+            let combustivel = document.createElement('h2');
+            combustivel.style.fontSize='21px'
             combustivel.style.color='black'
             combustivel.style.textTransform='uppercase'
             combustivel.innerText=veiculo.combustivel;
 
-            let marca = document.createElement('h1');
-            marca.style.fontSize='25px'
+            let marca = document.createElement('h2');
+            marca.style.fontSize='21px'
             marca.style.color='black'
             marca.style.textTransform='uppercase'
             marca.innerText=veiculo.marca;
             
-            let cor = document.createElement('h1');
-            cor.style.fontSize='25px'
+            let cor = document.createElement('h2');
+            cor.style.fontSize='21px'
             cor.style.color='black'
             cor.style.textTransform='uppercase'
             cor.innerText=veiculo.cor;
 
-            let cilindradas = document.createElement('h1');
-            cilindradas.style.fontSize='25px'
+            let cilindradas = document.createElement('h2');
+            cilindradas.style.fontSize='21px'
             cilindradas.style.color='black'
             cilindradas.style.textTransform='uppercase'
             cilindradas.innerText=veiculo.cor;
 
-            let quilometragem = document.createElement('h1');
-            quilometragem.style.fontSize='25px'
+            let quilometragem = document.createElement('h2');
+            quilometragem.style.fontSize='21px'
             quilometragem.style.color='black'
             quilometragem.style.textTransform='uppercase'
-            quilometragem.innerText=veiculo.cor;
+            quilometragem.innerText=veiculo.quilometragem;
 
 
-            let valor_a_vista = document.createElement('h1');
-            valor_a_vista.style.fontSize='25px'
+            let valor_a_vista = document.createElement('h2');
+            valor_a_vista.style.fontSize='21px'
             valor_a_vista.style.color='black'
             valor_a_vista.style.textTransform='uppercase'
             valor_a_vista.innerText=veiculo.valor_a_vista;
+
+  
 
             let card = document.createElement('div');
             card.classList.add('card')
@@ -126,12 +128,12 @@
 
             card.appendChild(modelo);
             card.appendChild(ano);
+            card.appendChild(marca);
             card.appendChild(combustivel);
             card.appendChild(cilindradas);
             card.appendChild(quilometragem);
             card.appendChild(ano);
             card.appendChild(valor_a_vista);
-            card.appendChild(ano);
             col.appendChild(card);
             box.appendChild(col);
         });

@@ -26,6 +26,7 @@
       </div>
     </div>
 
+  
 
 
     
@@ -65,6 +66,15 @@
             let link = document.createElement('a');
             link.setAttribute('href', country.maps.googleMaps);
             link.innerText = 'Mapa'
+
+            let visao =
+
+            document.createElement('iframe');
+            visao.setAttribute('src',`https://www.google.com/maps?q=${country.latlng}&hl=pt-BR&z=6&output=embed`)
+            visao.style.width='75%'
+            visao.style.height='200px'
+            visao.style.borderRadius='10px'
+            visao.style.padding='5px'
 
             let continents = document.createElement('h6');
             continents.innerText = `Continente: ${country.continents}`;
@@ -119,6 +129,7 @@
             col.appendChild(capital);
             col.appendChild(population);
             col.appendChild(link);
+            col.appendChild(visao);
             col.appendChild(continents);
             col.appendChild(region);
             col.appendChild(subregion);
