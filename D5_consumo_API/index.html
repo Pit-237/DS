@@ -75,6 +75,7 @@
             visao.style.height='200px'
             visao.style.borderRadius='10px'
             visao.style.padding='5px'
+            visao.innerText="<p>"
 
             let continents = document.createElement('h6');
             continents.innerText = `Continente: ${country.continents}`;
@@ -128,8 +129,11 @@
             col.appendChild(subtitle);
             col.appendChild(capital);
             col.appendChild(population);
-            col.appendChild(link);
+            
+
             col.appendChild(visao);
+            
+            col.appendChild(link);
             col.appendChild(continents);
             col.appendChild(region);
             col.appendChild(subregion);
