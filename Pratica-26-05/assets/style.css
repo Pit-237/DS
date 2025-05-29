@@ -1,13 +1,13 @@
 
 :root {
-    --primary-color: #0c0d44;
-    --secondary-color: #04BFBF;
-    --tertiary-color: #dfc6c6;
-    --quaternary-color: #3c1c94;
-    --quinary-color: #0e1246;
+    --primary-color:#000000;
+    --secondary-color: #000000;
+    --tertiary-color: #000000;
+    --quaternary-color: #000000;
+    --quinary-color: #000000;
     --light-color: #ffffff;
-    --medium-color: #3c57af;
-    --dark-color: #141414;
+    --medium-color: #000000;
+    --dark-color: #000000;
 }
 
 .bg-custom {
@@ -18,4 +18,8 @@
 .navbar-brand,
 .nav-link {
     color: var(--light-color);
+}
+
+#text1{
+    border: 1px, 2px, #141414;
 }
