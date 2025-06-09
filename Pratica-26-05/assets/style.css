@@ -15,11 +15,25 @@
     background: linear-gradient(3deg, var(--quaternary-color) 0%, var(--quinary-color) 27%, var(--primary-color) 56%, var(--quinary-color) 81%, var(--quaternary-color) 100%);
 }
 
+
+
+
 .navbar-brand,
 .nav-link {
     color: var(--light-color);
 }
 
-#text1{
-    border: 1px, 2px, #141414;
+body{
+    background-color: #261142;
+    border: 12px solid #261142;
+    
 }
+
+#homem{
+    background-color: white;
+    width: 90%;
+}
+h1,h2,h3,h4,h5,h6{
+    color: #bb69ad;
+}
+
