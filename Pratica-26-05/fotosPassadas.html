@@ -30,11 +30,10 @@
               </li>
               <li class="nav-item d-flex" style="align-items: center;">
                 <a class="nav-link" href="fotosMarte.html">Fotos de Marte</a>
-                <li class="nav-item d-flex" style="align-items: center;">
-                  <a class="nav-link" href="fotosPassadas.html">Ultimas 5 fotos astronomicas</a>
-                </li>
-              
-              
+              </li>
+              <li class="nav-item d-flex" style="align-items: center;">
+              <a class="nav-link" href="fotosPassadas.html">Ultimas fotos do dia</a>
+              </li>
               <li class="nav-item dropdown d-flex" style="align-items: center;">
                 <a class="nav-link dropdown-toggle d-flex" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="align-items: center;">
                   Planetas
@@ -42,7 +41,7 @@
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#"><h5>Mercurio</h5></a></li>
                   <li><a class="dropdown-item" href="#"><h5>Vênus</h5></a></li>
-                  <li><a class="dropdown-item" href="#"><h5>Terra</h5></a></li>
+                  <li><a class="dropdown-item" href="terra.html"><h5>Terra</h5></a></li>
                   <li><a class="dropdown-item" href="#"><h5>Marte</h5></a></li>
                   <li><a class="dropdown-item" href="#"><h5>Jupiter</h5></a></li>
                   <li><a class="dropdown-item" href="#"><h5>Saturno</h5></a></li>
@@ -69,19 +68,22 @@
         </div>
       </nav>
 
-      <div style="width: 100%;" class="text-center"><h1 class="outText">Foto Astronomica do Dia</h1></div>
+      <div style="width: 100%;" class="text-center"><h1 class="outText" style="margin-top: 14px;">Ultimas Fotos Astronomicas</h1></div>
 
       <div class="d-flex justify-content-center">
 
          
 
-      <div id="imagemDoDia">
+      <div id="imagemPassadas">
         <script>
 
-          let img_dia = document.querySelector('#imagemDoDia');
-          fetch('https://api.nasa.gov/planetary/apod?api_key=HZ9usUCHZhxpGoDfHGMJChal648fPMDuWi6xIAWr')
+          let img_passadas = document.querySelector('#imagemPassadas');
+          fetch('https://api.nasa.gov/planetary/apod?count=5&api_key=HZ9usUCHZhxpGoDfHGMJChal648fPMDuWi6xIAWr')
           .then(resp=> resp.json())
           .then(resp=> {
+            resp.forEach(photos => {
+                
+            
 
 
             let col = document.createElement('div');
@@ -91,7 +93,7 @@
     col.classList.add("col-12")
 
     let img = document.createElement('img');
-    img.setAttribute('src', resp.url);
+    img.setAttribute('src', photos.url);
     img.style.width = '50%';
     img.style.padding = '20px';
     img.style.border= 'solid 3px';
@@ -100,22 +102,23 @@
     colTexto.classList.add("col-6");
 
     let title = document.createElement('h1');
-    title.innerText = resp.title;
+    title.innerText = photos.title;
 
     let explicacao = document.createElement('h4');
-    explicacao.innerText = resp.explanation;
+    explicacao.innerText = photos.explanation;
 
     let date = document.createElement('h4');
-    date.innerText = resp.date;
+    date.innerText = photos.date;
 
     
     col.appendChild(colTexto);
     colTexto.appendChild(date);
     colTexto.appendChild(title);
     colTexto.appendChild(explicacao);
-    img_dia.appendChild(col);
+    img_passadas.appendChild(col);
     col.appendChild(img);
 
+});
     //codigo feito com guilherme
   })
 

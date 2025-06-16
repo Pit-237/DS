@@ -30,10 +30,10 @@
               </li>
               <li class="nav-item d-flex" style="align-items: center;">
                 <a class="nav-link" href="fotosMarte.html">Fotos de Marte</a>
-                <li class="nav-item d-flex" style="align-items: center;">
-                  <a class="nav-link" href="fotosPassadas.html">Ultimas 5 fotos astronomicas</a>
-                </li>
-              
+              </li>
+              <li class="nav-item d-flex" style="align-items: center;">
+                <a class="nav-link" href="fotosPassadas.html">Ultimas 5 fotos astronomicas</a>
+              </li>
               
               <li class="nav-item dropdown d-flex" style="align-items: center;">
                 <a class="nav-link dropdown-toggle d-flex" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="align-items: center;">
@@ -69,65 +69,61 @@
         </div>
       </nav>
 
-      <div style="width: 100%;" class="text-center"><h1 class="outText">Foto Astronomica do Dia</h1></div>
+        <div style="width: 100%; margin-top:13px;" class="text-center">
+      <h1 class="outText">Foto da Terra</h1>
+        </div>
 
       <div class="d-flex justify-content-center">
 
          
 
-      <div id="imagemDoDia">
+      <div id="imagemMarte">
         <script>
 
-          let img_dia = document.querySelector('#imagemDoDia');
-          fetch('https://api.nasa.gov/planetary/apod?api_key=HZ9usUCHZhxpGoDfHGMJChal648fPMDuWi6xIAWr')
+
+
+
+          let img_marte = document.querySelector('#imagemMarte');
+
+          fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=HZ9usUCHZhxpGoDfHGMJChal648fPMDuWi6xIAWr')
           .then(resp=> resp.json())
           .then(resp=> {
 
+        let photo = resp.photos;
+        for (let i = 0; i < 50 && i < photo.length; i++) {
 
-            let col = document.createElement('div');
-    col.style.display = 'flex';
-    col.style.alignItems = 'center';
-    col.style.padding = '20px';
-    col.classList.add("col-12")
+            
 
     let img = document.createElement('img');
-    img.setAttribute('src', resp.url);
+    img.setAttribute('src', photo[i].url);
     img.style.width = '50%';
     img.style.padding = '20px';
     img.style.border= 'solid 3px';
 
-    let colTexto = document.createElement('div');
-    colTexto.classList.add("col-6");
+    let texto = document.createElement('h5');
+    texto.innerHTML = photo[i].earth_date
 
-    let title = document.createElement('h1');
-    title.innerText = resp.title;
-
-    let explicacao = document.createElement('h4');
-    explicacao.innerText = resp.explanation;
-
-    let date = document.createElement('h4');
-    date.innerText = resp.date;
+    let col = document.createElement('div');
 
     
-    col.appendChild(colTexto);
-    colTexto.appendChild(date);
-    colTexto.appendChild(title);
-    colTexto.appendChild(explicacao);
-    img_dia.appendChild(col);
+
+  
     col.appendChild(img);
+    col.appendChild(texto);
+    img_marte.appendChild(col);
+    
 
     //codigo feito com guilherme
-  })
+  }})
 
   .catch(erro => {
     console.log(erro);
   })
   .finally(() => {
-    console.log('Requisição Finalizada!');
-  })
+    console.log('Requisição Finalizada!');})
+    
         </script>
-        </div>
-      </div>
+        
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 
