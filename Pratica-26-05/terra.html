@@ -77,51 +77,58 @@
 
          
 
-      <div id="imagemMarte">
+      <div id="imagemTerra">
         <script>
 
+let img_terra = document.querySelector('#imagemTerra');
 
+fetch('https://api.nasa.gov/EPIC/api/natural/images?api_key=HZ9usUCHZhxpGoDfHGMJChal648fPMDuWi6xIAWr')
+.then(resp=> resp.json())
+.then(resp=> {
 
+let photo = resp.photos;
+resp.forEach(elemento => {
 
-          let img_marte = document.querySelector('#imagemMarte');
+{
 
-          fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=HZ9usUCHZhxpGoDfHGMJChal648fPMDuWi6xIAWr')
-          .then(resp=> resp.json())
-          .then(resp=> {
+let img_name= elemento.image;
+let date = elemento.date;
 
-        let photo = resp.photos;
-        for (let i = 0; i < 50 && i < photo.length; i++) {
+let link= `https://epic.gsfc.nasa.gov/archive/natural/${date.substr(0, 4)}/${date.substr(5, 2)}/${date.substr(8, 2)}/jpg/${img_name}.jpg`
 
-            
-
-    let img = document.createElement('img');
-    img.setAttribute('src', photo[i].url);
-    img.style.width = '50%';
-    img.style.padding = '20px';
-    img.style.border= 'solid 3px';
-
-    let texto = document.createElement('h5');
-    texto.innerHTML = photo[i].earth_date
-
-    let col = document.createElement('div');
-
-    
-
+let dados_img= document.createElement('h3');
+dados_img.innerText=`${elemento.date}`
   
-    col.appendChild(img);
-    col.appendChild(texto);
-    img_marte.appendChild(col);
-    
 
-    //codigo feito com guilherme
-  }})
+let img = document.createElement('img');
+img.setAttribute('src', link);
+img.style.width = '50%';
+img.style.padding = '20px';
+img.style.border= 'solid 3px';
 
-  .catch(erro => {
-    console.log(erro);
-  })
-  .finally(() => {
-    console.log('Requisição Finalizada!');})
-    
+let texto = document.createElement('h5');
+
+
+let col = document.createElement('div');
+
+
+
+
+col.appendChild(img);
+col.appendChild(dados_img);
+img_terra.appendChild(col);
+
+//codigo feito com guilherme
+}})
+
+.catch(erro => {
+console.log(erro);
+})
+.finally(() => {
+console.log('Requisição Finalizada!');})
+
+});
+
         </script>
         
 
