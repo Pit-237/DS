@@ -1,0 +1,56 @@
+<script>
+        let objetosProximos = document.querySelector('#obj');
+
+        fetch('https://api.nasa.gov/neo/rest/v1/feed?start_date=2025-05-20&end_date=2025-05-26&api_key=HZ9usUCHZhxpGoDfHGMJChal648fPMDuWi6xIAWr')
+          .then(resp => resp.json())
+          .then(resp => {
+
+            let object = resp.near_earth_objects;
+
+            Object.keys(object).forEach(date => {
+              console.log("Data:", date);
+              console.log(object[date]);
+              object[date].forEach(asteroid => {
+
+                let col = document.createElement('div');
+                  col.classList.add("border");
+                  col.style.padding = '20px';
+                  col.style.margin = '10px';
+
+                  let nome = document.createElement('h2');
+                        nome.innerHTML = `<strong>${asteroid.name}</strong>`;
+
+                        let id = document.createElement('h6');
+                        id.innerHTML = "id: " + asteroid.id;
+
+                        let closeData = asteroid.close_approach_data[0].close_approach_date_full;
+                        let data = document.createElement('h4');
+                        data.innerHTML = `🗓️ ${closeData}`;
+
+                        let distance = asteroid.close_approach_data[0].miss_distance.kilometers;
+                        let Km = document.createElement('h5');
+                        Km.innerHTML = ` Distance: ${distance} km`;
+
+                        objetosProximos.appendChild(col);
+
+                        col.appendChild(nome);
+                        col.appendChild(data);
+                        col.appendChild(Km);
+                        col.appendChild(id);
+
+
+
+              });
+            });
+
+
+
+
+          })
+          .catch(erro => {
+            console.log(erro);
+          })
+          .finally(() => {
+            console.log('Requisição Finalizada!');
+          })
+      </script>

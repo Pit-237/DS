@@ -79,84 +79,90 @@
 
   <div class="d-flex justify-content-center">
     <div class="row d-flex justify-content-center text-center" id="homem">
-      <script>
-        let objetosProximos = document.querySelector('#obj');
+      
+      
 
-        fetch('https://api.nasa.gov/neo/rest/v1/feed?start_date=2025-05-20&end_date=2025-05-26&api_key=HZ9usUCHZhxpGoDfHGMJChal648fPMDuWi6xIAWr')
-          .then(resp => resp.json())
-          .then(resp => {
-
-            let object = resp.near_earth_objects;
-
-            Object.keys(object).forEach(date => {
-              console.log("Data:", date);
-              console.log(object[date]);
-              object[date].forEach(asteroid => {
-
-                let col = document.createElement('div');
-                  col.classList.add("border");
-                  col.style.padding = '20px';
-                  col.style.margin = '10px';
-
-                  let nome = document.createElement('h2');
-                        nome.innerHTML = `<strong>${asteroid.name}</strong>`;
-
-                        let id = document.createElement('h6');
-                        id.innerHTML = "id: " + asteroid.id;
-
-                        let closeData = asteroid.close_approach_data[0].close_approach_date_full;
-                        let data = document.createElement('h4');
-                        data.innerHTML = `🗓️ ${closeData}`;
-
-                        let distance = asteroid.close_approach_data[0].miss_distance.kilometers;
-                        let Km = document.createElement('h5');
-                        Km.innerHTML = ` Distance: ${distance} km`;
-
-                        objetos_proximos.appendChild(col);
-
-                        col.appendChild(nome);
-                        col.appendChild(data);
-                        col.appendChild(Km);
-                        col.appendChild(id);
-
-
-
-              });
-            });
-
-
-
-
-          })
-          .catch(erro => {
-            console.log(erro);
-          })
-          .finally(() => {
-            console.log('Requisição Finalizada!');
-          })
-      </script>
-      </div>
-    </div>
-
-  </div>
-
-  <p></p>
+  <p><h1>Objetos proximos da terra</h1></p>
 
 
 
   <!-- nome/id - velocidade km/h - data - distancia - é arriscado -->
 
   <div class="d-flex justify-content-center">
-    <div class="row d-flex justify-content-center text-center" id="obj">
+    <div class="row d-flex justify-content-center text-center" id="obj-proximos">
 
       
       
+      
 
-    </div>
+
+  <script>
+    let objetos_proximos = document.querySelector('#obj-proximos');
+
+    fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=2025-05-20&end_date=2025-05-26&api_key=PBFbUJXefPkim5a7P9AGgvPHglaDqY1s1VQx3QVk`)
+        .then(resp => resp.json())
+        .then(resp => {
+
+            let object = resp.near_earth_objects;
+
+            // Itera sobre as chaves (datas)
+            Object.keys(object).forEach(date => {
+                console.log("Data:", date);
+                console.log(object[date]);
+                // Itera sobre o array de objetos daquela data
+                object[date].forEach(asteroid => {
+                    // console.log(asteroid.name);
+
+                    let col = document.createElement('div');
+                    col.style.padding = '10px';
+                    col.style.border = 'purple 1px solid';
+
+                    let nome = document.createElement('h3');
+                    nome.innerHTML = `<strong>${asteroid.name}</strong>`;
+
+                    let id = document.createElement('h6');
+                    id.innerHTML = "id: " + asteroid.id;
+
+                    let closeData = asteroid.close_approach_data[0].close_approach_date_full;
+                    let data = document.createElement('h4');
+                    data.innerHTML = `Data: ${closeData}`;
+
+                    let distance = asteroid.close_approach_data[0].miss_distance.kilometers;
+                    let Km = document.createElement('h5');
+                    Km.innerHTML = ` Distancia: ${distance} km`;
+
+                    let velocity= asteroid.close_approach_data[0].relative_velocity.kilometers_per_hour
+                    let speed = document.createElement('h5');
+                    speed.innerHTML= `Velocidade : ${velocity} Km/H`
+
+                    objetos_proximos.appendChild(col);
+
+                    col.appendChild(nome);
+                    col.appendChild(data);
+                    col.appendChild(Km);
+                    col.appendChild(speed);
+                    col.appendChild(id);
+
+                });
+            });
+
+
+
+
+          })
+        .catch(erro => {
+            console.log(erro);
+        })
+        .finally(() => {
+            console.log('Requisição Finalizada!');
+        })
+</script>
+
   </div>
-
   </div>
-
+  </div>
+  </div>
+  
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
