@@ -1,0 +1,100 @@
+<script>
+
+    class Veiculo{
+        constructor(marca, modelo){
+            this.marca = marca;
+            this.modelo= modelo;
+        }
+
+        acelerar(){
+            console.log(`${this.modelo} acelerou`)
+        }
+
+        frear(){
+            console.log(`${this.modelo} Não pode parar.`)
+        }
+    }
+
+    let veiculo_1 = new Veiculo('Ford', 'Ka 2002');
+    console.log(`Seu veiculo é ${veiculo_1.marca} ${veiculo_1.modelo}`)
+    veiculo_1.acelerar();
+    veiculo_1.frear();
+
+    console.log(veiculo_1)
+
+
+    class Pessoa{
+        constructor(nome, cpf, idade, telefone){
+        this.nome = nome;
+        this.cpf = cpf;
+        this.idade = idade;
+        this.telefone = telefone;
+    }
+
+    correr() {
+        console.log(`${this.nome} correu`)
+    }
+
+    pular() {
+        console.log(`${this.nome} pulou`)
+    }
+
+    falar() {
+        console.log(`${this.nome} falou merda nessa porra!`)
+    }
+
+    
+
+}
+
+let pessoa = new Pessoa('Guilherme', '55705707822', '16', '15 997916071')
+pessoa.correr();
+pessoa.pular();
+pessoa.falar();
+
+
+class Animal{
+    constructor(especie, idade, alimentacao, habitat, domestico){
+    this.especie = especie;
+    this.idade = idade;
+    this.alimentacao = alimentacao;
+    this.habitat = habitat;
+    this.domestico = domestico;
+}
+
+    comer(){
+        console.log(`${this.especie} comeu tudo, igual sua mãe`)
+    }
+
+    matar(){
+        console.log(`${this.especie} matou uma familia inocente`)
+    }
+
+    invocouDemoniosIntergalaticos(){
+        console.log(`${this.especie}... invocou... demonios intergalaticos.. legal`)
+    }
+
+    existiu(){
+        console.log(`${this.especie}.. só está existindo depois de tudo isso..`)
+    }
+
+}
+
+class Cachorro extends Animal{
+    constructor(especie, idade, alimentacao, habitat, domestico){
+        super(especie, idade, alimentacao, habitat);
+        this.domestico=domestico;
+
+    }
+    latir(){
+        console.log('Cachorro latiu')
+    }
+}
+
+let animal = new Animal('Urso', '392', 'Carnivoro', 'Florestas', 'Não')
+animal.comer();
+animal.matar();
+animal.invocouDemoniosIntergalaticos();
+animal.existiu();
+
+</script>
