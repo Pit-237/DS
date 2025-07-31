@@ -1,0 +1,70 @@
+<script>
+    // class Pessoa{
+    //     constructor(nome, idade, cpf){
+    //         this.nome= nome;
+    //         this.idade= idade;
+    //         this.cpf= cpf;
+    //     }
+    //     falar(){
+    //         console.log('Snickers !')
+    //     }
+        
+    //     andar(){
+    //         console.log('A pessoa andou!')
+    //     }
+    // }
+
+    // let professor = new Pessoa('Ajiota', '19,99','523759');
+    // console.log(professor.nome)
+    // console.log(professor.idade)
+    // console.log(professor.cpf)
+    // console.log(professor.falar())
+    // console.log(professor.andar())
+
+    // let aluno = new Pessoa('Heitor', '12', '957325')
+    // console.log(aluno)
+
+
+    class Usuario{
+        /*
+        No constructor esta ocorrendo o encapsulamento, ou nseja, os dados estao sendo agrupados dentro da classe (capsula)
+        */
+        constructor(senha, email, nome, funcao){
+        this.email = email;
+        this.senha = senha;
+        this.nome = nome;
+        this.funcao = funcao;
+    }
+    /*
+    Aqui esta ocorrendo o poliformismo ou seja a classe pode conter comportamentos diferentes como conectar, desconectar e etc...
+    */
+
+    statusoff(){
+        console.log(`Usuario está Offline`)
+    }
+    statuson(){
+        console.log(`Usuario está Online`)
+    }
+    usarSite(){
+        console.log(`Usuario usou vosso site`)
+    }
+    cantar(){
+        console.log(`僕ら  バカになって中を待って  今だけは忘れてラッタッタ (ラッタッタ)  踊り明かそうこの夜を分かそう  涙は拭いて眠らないように`)
+    }
+    
+
+}
+
+let administrador = new Usuario('237237','bigmoneys@gmail.com', 'Kris', 'adm');
+console.log(administrador.email)
+console.log(administrador.nome)
+console.log(administrador.funcao)
+
+let user = new Usuario('pipipipi', 'littlesnickers@hotmail.com', 'Pit', 'common')
+console.log(user.email)
+console.log(user.nome)
+console.log(user.funcao)
+
+
+
+</script>
