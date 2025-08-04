@@ -1,0 +1,67 @@
+<script>
+    class Funcionario{
+        constructor(nome, salario_base, horas_trabalhadas){
+            this.nome = nome;
+            this.salario_base = salario_base;
+            this.horas_trabalhadas= horas_trabalhadas;
+        }
+
+        set nomeFuncionario(nome){
+            this.nome = nome
+        }
+
+        get nomeFuncionario(){
+            return this.nome;
+        }
+
+
+        set salarioBase(salario_base){
+            this.salario_base = salario_base
+        }
+
+        get salarioBase(){
+            return this.salario_base
+        }
+
+
+        set horasTrabalhadas(horas_trabalhadas){
+            this.horas_trabalhadas =horas_trabalhadas
+        }
+
+        get horasTrabalhadas(){
+            return this.horas_trabalhadas
+        }
+
+
+
+        calcularSalario() {
+            return this.salario_base * this.horas_trabalhadas
+        }
+    }
+
+    let programador_backend = new Funcionario();
+    programador_backend.nomeFuncionario = 'Arquelito'
+    programador_backend.salarioBase = 70
+    programador_backend.horasTrabalhadas = 30
+    console.log(programador_backend.calcularSalario())
+
+    let desenvolvedor_frontend = new Funcionario();
+    desenvolvedor_frontend.nomeFuncionario = 'Sabrina'
+    desenvolvedor_frontend.salarioBase = 30
+    desenvolvedor_frontend.horasTrabalhadas = 60
+    console.log(desenvolvedor_frontend.calcularSalario())
+
+    let gerente = new Funcionario();
+    gerente.nomeFuncionario = 'Safado';
+    gerente.salarioBase = 90;
+    gerente.horasTrabalhadas = 60;
+    console.log(gerente.calcularSalario())
+
+    let ux_design = new Funcionario();
+    ux_design.nomeFuncionario = 'Zakaralhw';
+    ux_design.salarioBase = 45;
+    ux_design.horasTrabalhadas = 40;
+    console.log(ux_design.calcularSalario())
+
+
+</script>
