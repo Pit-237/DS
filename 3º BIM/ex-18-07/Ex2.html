@@ -1,0 +1,55 @@
+<script>
+    class ContaBancaria{
+        constructor(titular,saldo,numeroConta){
+            this.titular=titular;
+            this.saldo=0;
+            this.numeroConta=numeroConta;
+        }
+
+        set titularConta(titular){
+            this.titular= titular;
+        }
+        get titularConta(){
+            return this.titular
+        }
+
+        set saldoConta(saldo) {
+            this.saldo = saldo;
+        }
+        get saldoConta() {
+            return this.saldo;
+        }
+
+        set numeroConta(numero_conta) {
+            this.numero_conta = numero_conta;
+        }
+
+        get numeroConta() {
+            return this.numero_conta;
+        }
+
+        depositar(valor){
+            console.log(`Você depositou ${valor} reais!`)
+            return this.saldo = this.saldo + valor
+        }
+        investirTigrinho(valor){
+            console.log(`Você investiu ${valor} reais! Ele não soltou a carta`)
+            return this.saldo = this.saldo - valor
+        }
+        exibirTigrinho(){
+            console.log(`${this.saldo}`)
+            
+        }
+
+    }
+
+    let Conta1 = new ContaBancaria('Camily', '123')
+    
+
+
+</script>
+
+    <button onclick="Conta1.investirTigrinho(300), Conta1.exibirTigrinho()">Investir no Pequeno Tigre</button>
+    <button onclick="Conta1.depositar(30), Conta1.exibirTigrinho()">Depositar para investir</button>
+
+    
