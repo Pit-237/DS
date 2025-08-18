@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chat do Yoda</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center mb-3">
+            <div class="col-10">
+                <div class="card shadow d-flex align-items-center p-3 m-2">
+                    <form action="">
+                        <div class="mb-3 mt-3">
+                            <label for="">Sua pergunta digite</label>
+                            <input type="text" name="pergunta" class="p-2" id="pergunta" placeholder=". . .">
+                            <button class="btn btn-dark" onclick="perguntar()">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center">
+            <div class="col-8">
+                <div class="card shadow m-3 p-3">Meu texto</div>
+                <div class="card shadow bg-success m-3 p-3">Resposta do Yoda</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        let pergunta = document.getElementById('pergunta').value;
+        
+
+        const KEY = ``;
+        const URL = `https://api.openai.com/v1/chat/completions`;
+         
+
+        fetch(URL, {
+            method: 'POST',  // post, get, delete, put
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${KEY}`
+            },
+            body: JSON.stringify({
+                model: 'gpt-4o-mini',
+                messages: [
+                    { role: 'system', content: 'Me responda como se você fosse o Mestre Yoda, de forma curta e clara'},
+                    { role: 'user', content: pergunta}
+                ],
+                max_tokens : 50
+            })
+
+
+        })
+
+
+        .then(resp => resp.json())
+        .then(resp=> {
+            console.log(resp);
+        })
+        .catch( erro=> {
+            console.log(erro);
+        })
+        .finally(()=>{
+            console.log('Finalizado')
+        })
+
+
+
+    </script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+  </body>
+</html>
