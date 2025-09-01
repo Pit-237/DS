@@ -6,20 +6,39 @@
     <title>Chat do Yoda</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <script>src="./model.js"</script>
   </head>
-  <body>
+  <body style="background-color: darkolivegreen;">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <div class="card" onclick="selecionarPersonagem('Yoda', 'yodaNO.png')">
+                    <img src="yodaNO.png" alt="" width="160px">
+                </div>
+                <div class="card" onclick="selecionarPersonagem('Mario', '1200px-Mario_SSBU')">
+                    <img src="1200px-Mario_SSBU.png" alt="" width="160px">
+                </div>
+                <div class="card" onclick="selecionarPersonagem('Kirby', '')">
+                    <img src="250px-Kirby_SSBU.png" alt="" width="160px">
+                </div>
+            </div>
+        </div>
+    </div>
     
     <div class="container-fluid">
         <div class="row d-flex justify-content-center mb-3">
             <div class="col-10">
-                <div class="card shadow d-flex align-items-center p-3 m-2">
-                    <form action="">
+                <div class="card shadow d-flex align-items-center p-3 m-2" style="background-color: rgb(168, 194, 167)">
+                    
+                    
                         <div class="mb-3 mt-3">
+                            <img src="yodaIdle.png" style="height: 110px;" alt="blab">
                             <label for="">Sua pergunta digite</label>
                             <input type="text" name="pergunta" class="p-2" id="pergunta" placeholder=". . .">
                             <button class="btn btn-dark" onclick="perguntar()">Enviar</button>
                         </div>
-                    </form>
+                    
                 </div>
             </div>
         </div>
@@ -28,15 +47,40 @@
 
     <div class="container-fluid">
         <div class="row d-flex justify-content-center">
-            <div class="col-8">
-                <div class="card shadow m-3 p-3">Meu texto</div>
-                <div class="card shadow bg-success m-3 p-3">Resposta do Yoda</div>
+            <div class="col-12 col-lg-10 col-xl-8" style="height:100vh;">
+                <div class="card shadow p-1 m-2" style="background-color: rgb(168, 194, 167);height: 100vh;">
+                    <div class="container-fluid">
+
+                        <div class="row" id="chat">
+
+                            <div class="col-12">
+                                <!-- <div class="row">
+                                    <div class="col-6 d-flex justify-content-end w-100">
+                                        <div class="card shadow m-3 p-3">Meu Texto</div>
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-start w-100">
+                                        <div class="card shadow m-3 p-3" style="color: aliceblue; background-color: rgb(103, 153, 45);">Resposta Yoda</div>
+                                    </div> -->
+                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
             </div>
         </div>
     </div>
+   
 
     <script>
+        let personagem
+        function selecionarPersonagem(nome, foto){
+            personagem = new Personagem (nome,foto)
+        }
 
+        let chat = document.getElementById('chat');
+
+        function perguntar(){
         let pergunta = document.getElementById('pergunta').value;
         
 
@@ -53,10 +97,10 @@
             body: JSON.stringify({
                 model: 'gpt-4o-mini',
                 messages: [
-                    { role: 'system', content: 'Me responda como se você fosse o Mestre Yoda, de forma curta e clara'},
+                    { role: 'system', content: `Me responda como se você fosse o ${personagem.nome}, de forma curta e clara`},
                     { role: 'user', content: pergunta}
                 ],
-                max_tokens : 50
+                max_tokens : 70
             })
 
 
@@ -66,6 +110,35 @@
         .then(resp => resp.json())
         .then(resp=> {
             console.log(resp);
+
+            let col_perg = document.createElement('div');
+            col_perg.classList.add('col-12', 'd-flex', 'justify-content-end');
+
+            let col_resp = document.createElement('div');
+            col_resp.classList.add('col-12', 'd-flex', 'justify-content-start')
+
+
+            let card_perg = document.createElement('div');
+            card_perg.classList.add('card', 'p-3', 'm-3');
+            card_perg.innerText = pergunta;
+
+            let card_resp = document.createElement('div');
+            card_resp.classList.add('card', 'p-3', 'm-3', 'respYoda');
+            card_resp.innerText = personagem.foto + personagem.nome + "diz:" + resp.choices[0].message.content
+
+            let foto = document.createElement('img');
+            foto.setAttribute('src', personagem.foto);
+            foto.setAttribute('src', personagem.foto);
+            card_resp.appendChild(foto);
+
+
+            
+            col_perg.appendChild(card_perg);
+            col_resp.appendChild(card_resp);
+            chat.appendChild(col_perg);
+            chat.appendChild(col_resp);
+            
+
         })
         .catch( erro=> {
             console.log(erro);
@@ -75,7 +148,7 @@
         })
 
 
-
+    }
     </script>
 
 
