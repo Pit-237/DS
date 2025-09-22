@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Musician.io</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="./model.js"></script>
+  </head>
+  <body style="background-color: #1C192E;">
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: black;">
+  <div class="container-fluid" style="background-color: #1C192E;">
+       <img src="logotext.png" alt="" style="width: 170px; margin: 6px;">
+        <button class="navbar-toggler" style="background-color: #BE2C3F;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      </ul>
+    </div>
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center mb-3">
+            <div class="col-10">
+                <div class="card shadow d-flex align-items-center p-3 m-2" style="background-color: rgb(180, 180, 180)">
+                    
+                    
+                        <div class="mb-3 mt-3">
+                            
+                            <label for="">Diga um tema de uma musica e deixe sua letra ser criada</label>
+                            <div class="d-flex">
+                            <input type="text" name="pergunta" class="p-2 w-100" id="pergunta" placeholder=". . .">
+                            </div>
+                            <p></p>
+                            
+                            <label for="">Aqui, um titulo para sua musica</label>
+                            <div class="d-flex">
+                            <input type="text" name="pergunta" class="p-2 w-100" id="pergunta2" placeholder=". . .">
+                            </div>
+                            <p></p>
+                            
+                            <label for="">E aqui, o estilo da sua musica</label>
+                            <div class="d-flex align-items-center"></div>
+                            <input type="text" name="pergunta" class="p-2 w-100" id="pergunta3" placeholder=". . .">
+                            </div>
+
+                            <p></p>
+                            <button class="btn" style="background-color: #BE2C3F; color: #FFFCF0;" onclick="perguntar()">Criar</button>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-lg-10 col-xl-8" style="height:auto;">
+                <div class="card shadow p-1 m-2" style="background-color: rgb(180, 180, 180);height:auto;">
+                    <div class="container-fluid">
+
+                        <div class="row" id="chat">
+
+                            <div class="col-12">
+                                <!-- <div class="row">
+                                    <div class="col-6 d-flex justify-content-end w-100">
+                                        <div class="card shadow m-3 p-3">Meu Texto</div>
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-start w-100">
+                                        <div class="card shadow m-3 p-3" style="color: aliceblue; background-color: rgb(103, 153, 45);">Resposta Yoda</div>
+                                    </div> -->
+                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+   
+
+    <script>
+        let chat = document.getElementById('chat');
+
+        function perguntar(){
+        let tema = document.getElementById('pergunta').value;
+        let titulo = document.getElementById('pergunta2').value;
+        let estilo = document.getElementById('pergunta3').value;
+        
+
+        const KEY = ``;
+        const URL = `https://api.openai.com/v1/chat/completions`;
+         
+
+        fetch(URL, {
+            method: 'POST',  // post, get, delete, put
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${KEY}`
+            },
+            body: JSON.stringify({
+                model: 'gpt-4o-mini',
+                messages: [
+                    { role: 'system', content: `Me de uma musica bem curta com o tema de:${tema}, título: ${titulo} e estilo ${estilo} (Caso algum dos dois esteja vazio, crie um no lugar)`},
+                    { role: 'user', content: tema}
+                ],
+                max_tokens : 190
+            })
+
+
+        })
+
+
+        .then(resp => resp.json())
+        .then(resp=> {
+            console.log(resp);
+
+            let col_perg = document.createElement('div');
+            col_perg.classList.add('col-12', 'd-flex', 'justify-content-end');
+
+            let col_resp = document.createElement('div');
+            col_resp.classList.add('col-12', 'd-flex', 'justify-content-start')
+
+
+            let card_perg = document.createElement('div');
+            card_perg.classList.add('card', 'p-3', 'm-3');
+            card_perg.innerText = pergunta;
+
+            let card_resp = document.createElement('div');
+            card_resp.classList.add('card', 'p-3', 'm-3', 'respYoda');
+            card_resp.innerText = `Aqui está a letra da sua musica ` + titulo + ': ' + resp.choices[0].message.content
+
+            
+        
+            col_perg.appendChild(card_perg);
+            col_resp.appendChild(card_resp);
+            chat.appendChild(col_perg);
+            chat.appendChild(col_resp);
+            
+
+        })
+        .catch( erro=> {
+            console.log(erro);
+        })
+        .finally(()=>{
+            console.log('Finalizado')
+        })
+
+
+    }
+    </script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+  </body>
+</html>
